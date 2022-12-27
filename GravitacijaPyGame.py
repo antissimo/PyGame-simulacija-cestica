@@ -4,43 +4,8 @@ import random
 from enum import Enum
 Balls=[]
 def colorreact(color1,color2):
-    if color1==Color.Red:
-        if color2==Color.Red:
-            force=-0.6
-        if color2==Color.Green:
-            force=0.7
-        if color2==Color.Blue:
-            force=-1.1
-        if color2==Color.Yellow:
-            force=-0.5
-    if color1==Color.Green:
-        if color2==Color.Red:
-            force=-0.3
-        if color2==Color.Green:
-            force=0.4
-        if color2==Color.Blue:
-            force=-0.6
-        if color2==Color.Yellow:
-            force=0.5
-    if color1==Color.Blue:
-        if color2==Color.Red:
-            force=0.8
-        if color2==Color.Green:
-            force=0
-        if color2==Color.Blue:
-            force=-0.6
-        if color2==Color.Yellow:
-            force=0
-    if color1==Color.Yellow:
-        if color2==Color.Red:
-            force=0.6
-        if color2==Color.Green:
-            force=-1.2
-        if color2==Color.Blue:
-            force=0
-        if color2==Color.Yellow:
-            force=0
-    return force
+    colorMatrix=[[-0.6,0.7,-1.1,-0.5],[-0.3,5,-0.6,0.5],[0.8,0,-0.6,0],[0.6,-1.2,0,0]]
+    return colorMatrix[color1.value-1][color2.value-1]
 class Color(Enum):
     Red = 1
     Green = 2
@@ -125,7 +90,7 @@ def createBalls(ballsRed,ballsGreen,ballsBlue,ballsYellow):
 pygame.init()
 screen = pygame.display.set_mode([1500, 750])
 running = True
-createBalls(0,40,0,0)#proporcionalno je sa kvadratom broja loptica, pa kad je vise od 40 loptica, fps odpadne
+createBalls(100,10,10,10)#proporcionalno je sa kvadratom broja loptica, pa kad je vise od 40 loptica, fps odpadne
 
 while running:
     for event in pygame.event.get():
